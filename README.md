@@ -2,7 +2,7 @@
 
 A blockchain-based arcade game built on the Somnia Network where players can test their reflexes, earn high scores, and compete on global leaderboards.
 
-🎮 [Live Demo](https://somnia-speedster.netlify.app/)
+🎮 [Live Demo](https://somnia-speedster.vercel.app/)
 
 ✨ Features
 - **Blockchain Integration**: Game scores permanently recorded on the Somnia Testnet
