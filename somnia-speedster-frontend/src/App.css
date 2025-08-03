@@ -1,0 +1,1009 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #121212;
+  color: white;
+  overflow: hidden;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 1s ease;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #333;
+  z-index: 100;
+}
+
+.header h1 {
+  font-size: 28px;
+  background: linear-gradient(45deg, #FF5733, #33FF57, #3357FF);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient 10s ease infinite;
+  background-size: 300% 300%;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.leaderboard-button {
+  background: linear-gradient(45deg, #FF5733, #FFAA33);
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.leaderboard-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.connect-button {
+  background: linear-gradient(45deg, #FF5733, #33FF57);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.connect-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.wallet-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.wallet-info span {
+  background-color: #333;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.wallet-info button {
+  background-color: #ff3333;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.wallet-info button:hover {
+  background-color: #cc0000;
+}
+
+/* Main Content */
+.main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  position: relative;
+  min-height: calc(100vh - 80px); /* Adjust based on your header height */
+}
+
+/* Welcome Screen Enhancements */
+.welcome {
+  text-align: center;
+  max-width: 800px; /* Increase from 600px */
+  width: 80%; /* Add this to make it responsive */
+  position: relative;
+  z-index: 1;
+  background-color: rgba(18, 18, 18, 0.7);
+  padding: 60px; /* Increase padding from 40px */
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+  border: 1px solid #33FF57;
+  box-shadow: 0 0 30px rgba(51, 255, 87, 0.2);
+  margin: 0 auto; /* Center it horizontally */
+}
+
+.welcome h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #33FF57;
+  text-shadow: 0 0 10px rgba(51, 255, 87, 0.5);
+}
+
+.welcome p {
+  font-size: 18px;
+  margin-bottom: 20px;
+  line-height: 1.6;
+  color: #fff;
+}
+
+/* Game Setup */
+.game-setup {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.registration, .game-start {
+  background-color: #1e1e1e;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  border: 1px solid #333;
+}
+
+.registration h2, .game-start h2 {
+  margin-bottom: 20px;
+  color: #33FF57;
+}
+
+.registration input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 2px solid #333;
+  border-radius: 5px;
+  background-color: #2a2a2a;
+  color: white;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.registration input:focus {
+  border-color: #33FF57;
+  outline: none;
+}
+
+.registration button, .start-button {
+  background: linear-gradient(45deg, #33FF57, #3357FF);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.registration button:hover, .start-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.start-button {
+  font-size: 20px;
+  padding: 15px 40px;
+}
+
+/* Mode Select Button */
+.mode-select-button {
+  background: linear-gradient(45deg, #33AAFF, #3357FF);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 25px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.mode-select-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(51, 170, 255, 0.4);
+  background: linear-gradient(45deg, #44BAFF, #4367FF);
+}
+
+.mode-select-button:active {
+  transform: translateY(1px);
+}
+
+/* Modal styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+.leaderboard-modal {
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border: 1px solid #333;
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.modal-header h2 {
+  color: #FF5733;
+  margin: 0;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.close-button:hover {
+  color: #FF5733;
+}
+
+/* Leaderboard */
+.leaderboard {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+}
+
+.leaderboard h2, .leaderboard h3 {
+  margin-bottom: 20px;
+  color: #FF5733;
+  text-align: center;
+}
+
+.leaderboard h3 {
+  color: #33FF57;
+  margin-bottom: 15px;
+}
+
+.leaderboard table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.leaderboard th, .leaderboard td {
+  padding: 12px;
+  text-align: center;
+}
+
+.leaderboard th {
+  background-color: #333;
+  color: white;
+}
+
+.leaderboard tr:nth-child(even) {
+  background-color: #2a2a2a;
+}
+
+.leaderboard tr:hover {
+  background-color: #333;
+}
+
+.current-player {
+  background-color: rgba(255, 87, 51, 0.2) !important;
+  font-weight: bold;
+}
+
+/* Leaderboard tabs */
+.leaderboard-tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.leaderboard-tabs button {
+  padding: 8px 16px;
+  margin: 5px;
+  background-color: #333;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.leaderboard-tabs button:hover {
+  background-color: #555;
+}
+
+.leaderboard-tabs button.active {
+  background-color: #FF5733;
+}
+
+/* Game Area */
+.game-area {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  will-change: transform;
+}
+
+.game-stats {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  z-index: 10;
+}
+
+.stat {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  border: 1px solid #333;
+}
+
+.target {
+  position: absolute;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+  transition: transform 0.1s, box-shadow 0.2s;
+  will-change: transform;
+}
+
+.target:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+}
+
+/* Game End Screen */
+.game-end {
+  background-color: #1e1e1e;
+  padding: 40px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  border: 1px solid #333;
+}
+
+.game-end h2 {
+  margin-bottom: 20px;
+  color: #FF5733;
+  font-size: 32px;
+  text-shadow: 0 0 10px rgba(255, 87, 51, 0.3);
+}
+
+.game-end p {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+/* Button Group for multiple buttons */
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+/* Submit High Score Button */
+.submit-button {
+  background: linear-gradient(45deg, #FF5733, #FF9E33);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 25px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.submit-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(255, 87, 51, 0.4);
+  background: linear-gradient(45deg, #FF7033, #FFAE33);
+}
+
+.submit-button:active {
+  transform: translateY(1px);
+}
+
+/* Update Score Button */
+.update-button {
+  background: linear-gradient(45deg, #3357FF, #33AAFF);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 25px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.update-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(51, 87, 255, 0.4);
+  background: linear-gradient(45deg, #4367FF, #44BAFF);
+}
+
+.update-button:active {
+  transform: translateY(1px);
+}
+
+/* Target hit animation */
+@keyframes targetHit {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Game area background pulse animation */
+@keyframes backgroundPulse {
+  0% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 0.1;
+  }
+}
+
+/* Add a subtle background pulse effect */
+.game-area::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(0,0,0,0) 70%);
+  pointer-events: none;
+  animation: backgroundPulse 5s infinite;
+  z-index: -1;
+}
+
+/* Enhanced game stats */
+.game-stats {
+  background: rgba(0,0,0,0.5);
+  border-radius: 30px;
+  padding: 10px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Game Mode Selection */
+.game-modes {
+  margin: 20px 0;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+.game-modes h3 {
+  margin-bottom: 15px;
+  color: #33FF57;
+  font-size: 20px;
+}
+
+.mode-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.mode-button {
+  background-color: #2a2a2a;
+  border: 2px solid #333;
+  border-radius: 8px;
+  padding: 15px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.mode-button.active {
+  border-color: #33FF57;
+  background: linear-gradient(45deg, rgba(51, 255, 87, 0.2), rgba(0, 0, 0, 0));
+  box-shadow: 0 0 15px rgba(51, 255, 87, 0.3);
+}
+
+.mode-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.mode-description {
+  font-size: 12px;
+  opacity: 0.7;
+  margin-top: 8px;
+  font-weight: normal;
+  text-align: center;
+}
+
+/* Modify game area for precision mode */
+.game-area.precision-mode {
+  cursor: crosshair;
+}
+
+/* Add a style for the timer in survival mode */
+.survival-stats {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  z-index: 10;
+}
+
+.difficulty-indicator {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  border: 1px solid #FF5733;
+  color: #FF5733;
+}
+
+/* Style for misclick indicator in precision mode */
+.misclick-indicator {
+  background-color: rgba(255, 0, 0, 0.7);
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Multiplier indicator */
+.multiplier-indicator {
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 0, 255, 0.3);
+  padding: 10px 20px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 100px;
+  z-index: 10;
+}
+
+.multiplier-indicator span {
+  font-size: 24px;
+  font-weight: bold;
+  color: #FF00FF;
+  margin-bottom: 5px;
+}
+
+.multiplier-timer {
+  height: 5px;
+  background-color: #FF00FF;
+  border-radius: 5px;
+  transition: width 0.5s linear;
+  width: 100%;
+}
+
+/* Pulse animation for power-ups */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+/* Power-ups */
+.power-up {
+  position: absolute;
+  cursor: pointer;
+  animation: pulse 1s infinite alternate;
+  z-index: 5;
+}
+
+/* Bubbles Animation */
+.bubbles-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(2px);
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(20px, -30px) scale(1.05);
+  }
+  100% {
+    transform: translate(-20px, 20px) scale(0.95);
+  }
+}
+
+/* Centered Connect Wallet Button */
+.connect-button-center {
+  background: linear-gradient(45deg, #FF5733, #33FF57);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 30px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  margin-top: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.connect-button-center:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.connect-button-center::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transform: rotate(45deg);
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0% {
+    left: -50%;
+    top: -50%;
+  }
+  100% {
+    left: 100%;
+    top: 100%;
+  }
+}
+
+/* Loading Screen */
+.loading-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #121212;
+  color: white;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(51, 255, 87, 0.3);
+  border-radius: 50%;
+  border-top-color: #33FF57;
+  animation: spin 1s ease-in-out infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-screen p {
+  font-size: 18px;
+  font-weight: bold;
+  color: #33FF57;
+}
+
+/* Particle Effects */
+.particles-container {
+  position: absolute;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  z-index: 100;
+  pointer-events: none;
+}
+
+/* Level transition effect */
+@keyframes levelUp {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) translateY(50px);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1) translateY(-50px);
+  }
+}
+
+.level-up-notification {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 48px;
+  font-weight: bold;
+  color: #33FF57;
+  text-shadow: 0 0 20px rgba(51, 255, 87, 0.8);
+  animation: levelUp 1.5s ease-out forwards;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* Additional responsive styles */
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: 22px;
+  }
+
+  .game-end h2 {
+    font-size: 24px;
+  }
+
+  .game-end p {
+    font-size: 16px;
+  }
+
+  .stat {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  .button-group {
+    gap: 10px;
+  }
+
+  .start-button, .update-button, .submit-button, .mode-select-button {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+
+  .game-modes {
+    padding: 15px 10px;
+  }
+
+  .mode-button {
+    padding: 10px;
+  }
+
+  .mode-description {
+    font-size: 10px;
+  }
+
+  .leaderboard th, .leaderboard td {
+    padding: 6px 3px;
+    font-size: 12px;
+  }
+}
+
+/* Tablet styles */
+@media (min-width: 481px) and (max-width: 768px) {
+  .button-group {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .submit-button, .update-button, .start-button, .mode-select-button {
+    width: 100%;
+    max-width: 250px;
+  }
+  
+  .game-end {
+    padding: 20px;
+  }
+  
+  .welcome {
+    padding: 30px;
+    width: 90%;
+  }
+  
+  .leaderboard table {
+    font-size: 14px;
+  }
+  
+  .leaderboard th, .leaderboard td {
+    padding: 8px 5px;
+  }
+
+  .mode-buttons {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Landscape orientation on mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .header {
+    padding: 10px;
+  }
+
+  .main {
+    padding: 10px;
+  }
+
+  .game-setup {
+    gap: 15px;
+  }
+
+  .registration, .game-start, .game-end {
+    padding: 15px;
+  }
+
+  .game-modes {
+    margin: 10px 0;
+    padding: 10px;
+  }
+
+  .mode-buttons {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+
+  .button-group {
+    margin-top: 15px;
+  }
+
+  .start-button, .update-button, .submit-button, .mode-select-button {
+    padding: 8px 15px;
+    font-size: 14px;
+  }
+}
+
+/* Horizontal header for larger screens */
+@media (min-width: 769px) {
+  .header {
+    flex-direction: row;
+  }
+  
+  .header-actions {
+    flex-direction: row;
+  }
+
+  .button-group {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) {
+  .target {
+    transform: scale(1.1);
+  }
+
+  .connect-button:active, .start-button:active, 
+  .update-button:active, .submit-button:active, 
+  .mode-select-button:active, .mode-button:active {
+    transform: scale(0.95);
+  }
+}
