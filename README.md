@@ -144,7 +144,7 @@ Game Controls
 
 🔗 Smart Contract
 The Somnia Speedster contract is deployed on Somnia Testnet at:
-`0x1234...` (replace with your actual contract address)
+`0xaf9307544bBC8240B0FdDa22c7e5AAc930aF476C`
 
 Key Contract Functions
 - `registerPlayer(string name)`: Register a new player
