@@ -4,6 +4,11 @@ A blockchain-based arcade game built on the Somnia Network where players can tes
 
 🎮 [Live Demo](https://somnia-speedster.vercel.app/)
 
+## 🎥 Demo Video ⭐
+
+[![Watch the video](https://img.youtube.com/vi/Syu8jAlIwT8/0.jpg)](https://youtu.be/Syu8jAlIwT8)
+
+
 ✨ Features
 - **Blockchain Integration**: Game scores permanently recorded on the Somnia Testnet
 - **Multiple Game Modes**: Standard, Survival, Time Attack, and Precision modes
@@ -161,7 +166,7 @@ Key Contract Functions
 - Tournament system
 
 📄 License
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the Apache License - see the LICENSE file for details.
 
 👥 Contributors
 - Swathiga Agihtaws - Developer
