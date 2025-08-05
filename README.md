@@ -6,7 +6,7 @@ A blockchain-based arcade game built on the Somnia Network where players can tes
 
 ## 🎥 Demo Video ⭐
 
-[![Watch the video](https://img.youtube.com/vi/Syu8jAlIwT8/0.jpg)](https://youtu.be/Syu8jAlIwT8)
+[![Watch the video](https://img.youtube.com/vi/2ZC7TquCAqc/0.jpg)](https://youtu.be/2ZC7TquCAqc)
 
 
 ✨ Features
