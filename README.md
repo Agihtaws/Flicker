@@ -1,7 +1,7 @@
 # ⚡ Flicker - Reflex Arena
 
-![Flicker Game Screenshot - Placeholder for a cool game image]
-(https://via.placeholder.com/1200x600?text=Flicker+Game+Screenshot)
+![Flicker Game Screenshot](https://raw.githubusercontent.com/Agihtaws/Flicker/main/frontend/public/ChatGPT%20Image%20Oct%208%2C%202025%2C%2002_23_35%20AM.png)
+
 
 ## 🚀 Project Overview
 
