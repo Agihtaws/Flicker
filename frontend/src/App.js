@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react'; // Import useRef
 import { useSpring, animated } from 'react-spring';
 import Confetti from 'react-confetti';
 import './App.css';
@@ -34,6 +34,8 @@ function GameApp() {
   // Game state
   const [score, setScore] = useState(0);
   const [timeLeft, setTimeLeft] = useState(60);
+  // FIXED: Ref to hold mutable timeLeft value for timer
+  const timeLeftRef = useRef(timeLeft); 
   const [level, setLevel] = useState(1);
   const [gameActive, setGameActive] = useState(false);
   const [targets, setTargets] = useState([]);
@@ -107,6 +109,12 @@ function GameApp() {
       console.log('🔊 Sounds initialized and enabled');
     }
   };
+
+  // Update timeLeftRef whenever timeLeft state changes
+  useEffect(() => {
+    timeLeftRef.current = timeLeft;
+  }, [timeLeft]);
+
 
   // Load all leaderboards on component mount
   useEffect(() => {
@@ -574,56 +582,43 @@ function GameApp() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Game timer and target spawning
+
+  // FIXED: Separate useEffect for the timer countdown
   useEffect(() => {
-    let timer;
+    let timerInterval;
+
+    if (gameActive) {
+      timerInterval = setInterval(() => {
+        setTimeLeft(prevTime => {
+          const currentTime = prevTime - 1;
+          // Play timer warning sound when 10 seconds left
+          if (currentTime === 10 && soundsEnabled) { // Check for 10 seconds remaining
+            soundManager.playTimerWarning();
+          }
+          
+          if (currentTime <= 0) {
+            clearInterval(timerInterval);
+            // The game end logic will now be handled by the next useEffect
+            return 0;
+          }
+          return currentTime;
+        });
+      }, 1000);
+    }
+
+    return () => {
+      clearInterval(timerInterval);
+    };
+  }, [gameActive, soundsEnabled]); // Only depend on gameActive and soundsEnabled for timer
+
+
+  // Existing useEffect for spawning and game end logic (modified)
+  useEffect(() => {
     let spawnTimer;
     let powerUpTimer;
     let multiplierTimer;
 
     if (gameActive) {
-      // Timer countdown
-      timer = setInterval(() => {
-        setTimeLeft(prev => {
-          // Play timer warning sound when 10 seconds left
-          if (prev === 11 && soundsEnabled) {
-            soundManager.playTimerWarning();
-          }
-          
-          if (prev <= 1) {
-            clearInterval(timer);
-            clearInterval(spawnTimer);
-            clearInterval(powerUpTimer);
-            clearInterval(multiplierTimer);
-            setGameActive(false);
-            
-            // FIXED: Precision mode final score calculation
-            let finalScore = score;
-            if (gameMode === 'precision') {
-              // In precision mode, misses are already deducted during gameplay (-5 per miss)
-              // Don't apply additional penalty at the end
-              console.log(`🎪 Precision mode final score: ${finalScore} (${missedClicks} misses already deducted)`);
-            }
-            
-            // Update session high score if this is better
-            if (finalScore > sessionHighScore) {
-              setSessionHighScore(finalScore);
-            }
-            
-            setScore(finalScore);
-            setShowPlayAgain(true);
-            
-            // Play game over sound (will be handled by auto-submit effect)
-            if (soundsEnabled && finalScore <= sessionHighScore) {
-              soundManager.playGameOver();
-            }
-            
-            return 0;
-          }
-          return prev - 1;
-        });
-      }, 1000);
-
       // Spawn targets
       const spawnTarget = () => {
         const id = Date.now();
@@ -703,13 +698,39 @@ function GameApp() {
       }
 
       return () => {
-        clearInterval(timer);
         clearInterval(spawnTimer);
         clearInterval(powerUpTimer);
         clearInterval(multiplierTimer);
       };
     }
-  }, [gameActive, level, score, sessionHighScore, gameMode, windowSize, missedClicks, multiplierActive, soundsEnabled]);
+  }, [gameActive, level, score, gameMode, windowSize, multiplierActive]);
+
+  // FIXED: Separate useEffect for handling game end when timeLeft hits 0
+  useEffect(() => {
+    if (gameActive && timeLeft <= 0) {
+      console.log('Game ended due to timer running out.');
+      setGameActive(false); // Stop game activity
+
+      let finalScore = score;
+      if (gameMode === 'precision') {
+        // Misses are already deducted during gameplay
+        console.log(`🎪 Precision mode final score: ${finalScore} (${missedClicks} misses already deducted)`);
+      }
+      
+      // Update session high score if this is better
+      if (finalScore > sessionHighScore) {
+        setSessionHighScore(finalScore);
+      }
+      
+      setScore(finalScore); // Ensure final score state is set
+      setShowPlayAgain(true);
+      
+      // Play game over sound (will be handled by auto-submit effect)
+      if (soundsEnabled && finalScore <= sessionHighScore) {
+        soundManager.playGameOver();
+      }
+    }
+  }, [gameActive, timeLeft, score, gameMode, missedClicks, sessionHighScore, soundsEnabled]); // Depend on timeLeft
 
   if (isLoading) {
     return <LoadingScreen />;
