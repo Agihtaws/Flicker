@@ -1,6 +1,9 @@
 # ⚡ Flicker - Reflex Arena
 
-![Flicker Game Screenshot](https://raw.githubusercontent.com/Agihtaws/Flicker/main/frontend/public/ChatGPT%20Image%20Oct%208%2C%202025%2C%2002_23_35%20AM.png)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Agihtaws/Flicker/main/frontend/public/ChatGPT%20Image%20Oct%208%2C%202025%2C%2002_23_35%20AM.png" 
+       alt="Flicker Game Screenshot" width ="1000" height="400">
+</p>
 
 
 ## 🚀 Project Overview
