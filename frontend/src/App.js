@@ -745,7 +745,7 @@ function GameApp() {
       {showConfetti && <Confetti width={windowSize.width} height={windowSize.height} />}
       
       <header className="header">
-        <h1>🎯 Speedster Arena</h1>
+        <h1>⚡Flicker</h1>
         <div className="header-actions">
           {player && (
             <button 
@@ -814,7 +814,7 @@ function GameApp() {
         ) : !player ? (
           <div className="auth-screen">
             <AnimatedBubbles explosions={explosions} isGameActive={gameActive} />
-            <h2>Welcome to Speedster Arena!</h2>
+            <h2>Welcome to Flicker!</h2>
             <p>Test your reflexes and compete for high scores!</p>
             
             <div className="auth-form">

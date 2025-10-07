@@ -30,7 +30,7 @@ app.use('/api/players', playerRoutes);
 app.get('/api/health', (req, res) => {
   res.json({ 
     success: true, 
-    message: 'Speedster Arena API is running!',
+    message: 'Flicker Backend API',
     timestamp: new Date().toISOString(),
     environment: process.env.NODE_ENV,
     uptime: process.uptime()

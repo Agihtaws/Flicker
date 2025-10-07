@@ -1,7 +1,7 @@
 {
-  "name": "speedster-arena-backend",
+  "name": "flicker-backend",
   "version": "1.0.0",
-  "description": "Backend API for Speedster Arena game",
+  "description": "Backend API for Flicker game",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -22,7 +22,7 @@
   "devDependencies": {
     "nodemon": "^3.0.1"
   },
-  "keywords": ["speedster", "arena", "game", "api", "backend"],
+  "keywords": ["flicker", "game", "api", "backend", "reflex"],
   "author": "Swathiga Ganesh",
   "license": "MIT"
 }

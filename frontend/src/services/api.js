@@ -14,7 +14,7 @@ const api = axios.create({
 // Add token to requests if available
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('speedsterToken');
+    const token = localStorage.getItem('flickerToken');
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -38,8 +38,8 @@ api.interceptors.response.use(
     
     // Handle token expiration
     if (error.response?.status === 401 || error.response?.status === 403) {
-      localStorage.removeItem('speedsterToken');
-      localStorage.removeItem('speedsterPlayer');
+      localStorage.removeItem('flickerToken');
+      localStorage.removeItem('flickerPlayer');
       window.location.reload(); // Force re-authentication
     }
     
@@ -59,8 +59,8 @@ export const playerAPI = {
       
       if (response.data.success && response.data.token) {
         // Store token and player data
-        localStorage.setItem('speedsterToken', response.data.token);
-        localStorage.setItem('speedsterPlayer', JSON.stringify(response.data.player));
+        localStorage.setItem('flickerToken', response.data.token);
+        localStorage.setItem('flickerPlayer', JSON.stringify(response.data.player));
       }
       
       return response.data;
