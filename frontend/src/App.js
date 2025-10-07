@@ -274,6 +274,7 @@ function GameApp() {
     
     console.log('💎 Generating power-up at level', level);
     
+    // FIXED: Removed the 'time' power-up from the game
     const powerUpTypes = [
       {
         type: 'points',
@@ -285,16 +286,7 @@ function GameApp() {
           setScore(prev => prev + bonusPoints);
         }
       },
-      {
-        type: 'time',
-        color: '#00FFFF',
-        size: 40,
-        effect: () => {
-          const bonusTime = Math.floor(Math.random() * 6) + 5;
-          console.log(`⏰ Time power-up: +${bonusTime}s`);
-          setTimeLeft(prev => prev + bonusTime);
-        }
-      },
+      // Removed the 'time' power-up from here
       {
         type: 'multiplier',
         color: '#FF00FF',
@@ -314,6 +306,9 @@ function GameApp() {
       }
     ];
     
+    // Ensure there are power-up types to select from
+    if (powerUpTypes.length === 0) return;
+
     const powerUpType = powerUpTypes[Math.floor(Math.random() * powerUpTypes.length)];
     const id = `powerup-${Date.now()}`;
     const powerUp = {
@@ -380,10 +375,7 @@ function GameApp() {
         const bonusPoints = Math.floor(Math.random() * 51) + 50;
         text = `+${bonusPoints}`;
         break;
-      case 'time':
-        const bonusTime = Math.floor(Math.random() * 6) + 5;
-        text = `+${bonusTime}s`;
-        break;
+      // Removed 'time' case
       case 'multiplier':
         const multiplier = Math.floor(Math.random() * 2) + 2;
         text = `${multiplier}x Score`;
