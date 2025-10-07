@@ -122,6 +122,11 @@ Both the frontend and backend of Flicker are deployed on **Render**.
 
 During deployment, ensure the `REACT_APP_API_URL` environment variable for the frontend points to the live backend URL, and the `FRONTEND_URL` environment variable for the backend points to the live frontend URL.
 
+## 🎥 Demo Video
+
+[![Watch the Demo](https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg)](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+
+
 ## 👤 Author
 
 *   **Swathiga Ganesh**
