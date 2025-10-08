@@ -124,7 +124,8 @@ During deployment, ensure the `REACT_APP_API_URL` environment variable for the f
 
 ## 🎥 Demo Video
 
-[![Watch the Demo](https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg)](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+[![Watch the Demo](https://img.youtube.com/vi/WEI90cKD-E4/maxresdefault.jpg)](https://www.youtube.com/watch?v=WEI90cKD-E4)
+
 
 
 ## 👤 Author
